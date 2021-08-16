@@ -3,37 +3,47 @@ var chalk = require('chalk');
 var score = 0;
 
 console.log(chalk.greenBright("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n"));
-console.log(chalk.blueBright("✌ How Well Do You know Me? ✌\n "));
+console.log(chalk.blueBright("✌ How Well Do You know About Biryani? ✌\n "));
 console.log(chalk.greenBright("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n\n"));
 
 var userName = readlineSync.question(chalk.bgRed.bold("Please Enter Your Name : \n\n"));
 console.log("\nWelcome",chalk.bold.greenBright(userName) ,"!\n");
 
 var questionOne = {
-  question: "1. What is Inder's Full Name? \n\n",
-  answer: "Inderjeet Bhagat"
+  question: "Biryani Originated From? \n\n",
+  optionA: "Persia",
+  optionB: "Awadh",
+  answer: "A"
 }
 var questionTwo ={
-  question: "What is my age? \n\n",
-  answer: "21"
+  question: "Pilaf and Biryani are more or less the same thing? \n\n",
+  optionA: "True",
+  optionB: "False",
+  answer: "B"
 }
 var questionThree ={
-  question: "What is my faourite color? \n\n",
-  answer: "Black"
+  question: "What makes Kolkata Biryani so Distinct from the rest? \n\n",
+  optionA: "The Spieces",
+  optionB: "The Flavoured Potato",
+  answer: "B"
 }
 var questionFour ={
-  question: "Who is my faourite Mentor? \n\n",
-  answer: "Tanay Pratap"
+  question: "Can Biryani Be Only Made With Basmati Rice?\n\n",
+  optionA: "True",
+  optionB: "False",
+  answer: "B"
 }
 var questionFive ={
-  question: "What is my faourite coding language? \n\n",
-  answer: "Javascript"
+  question: "To adjust the spice levels of Biryani during the british rule, it was served with?\n\n",
+  optionA: "Mirch ka Salan ad Raita",
+  optionB: "Cucumber Salad",
+  answer: "A"
 }
 
 var questions = [questionOne, questionTwo, questionThree, questionFour, questionFive];
 
-function endGame (question, answers){
-  var userAnswer = readlineSync.question(chalk.bgRed.bold(question));
+function endGame (question, answers, optionA, optionB){
+  var userAnswer = readlineSync.question(chalk.bgRed.bold(question ,"A : ", optionA,"\n","B : ", optionB,"\n\n"));
   if(userAnswer.toUpperCase() === answers.toUpperCase()){
     console.log(chalk.bgGreen.black("\n\n✔️  You're Absolutely Correct! "));
     score += 20;
@@ -61,7 +71,7 @@ var leaderboard = [
 ];
 
 for(var i=0; i<5; i++){
-  endGame(questions[i].question, questions[i].answer);
+  endGame(questions[i].question, questions[i].answer, questions[i].optionA, questions[i].optionB);
 }
 
 console.log(chalk.bold.bgBlueBright.black("------ The Quiz is Completed ------")); 
